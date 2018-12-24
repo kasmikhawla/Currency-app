@@ -12,7 +12,7 @@ export default function FetchCoinData() {
 
         dispatch({ type: FETCHING_COIN_DATA })
 
-        return axios.get(apiBaseURL)
+        return axios.get(apiBaseURL,{ 'headers': {'Authorization':'CMC_PRO_API_KEY'}})
             .then(res => {
                 dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: res.data })
             })
