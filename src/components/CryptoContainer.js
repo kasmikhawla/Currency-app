@@ -4,37 +4,30 @@ import { View, Text, FlatList  } from 'react-native';
 import { List, ListItem } from "react-native-elements"; 
 import FetchCoinData from './../Actions/FetchCoinData';
 
-
 class CryptoContainer extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          loading: false,
-          data: [],
-          page: 1,
-          seed: 1,
-          error: null,
-          refreshing: false,
-        };
-      }
     componentDidMount() {
-        console.log(this.props.FetchCoinData())
-        ;
+        this.props.FetchCoinData()
     }
-
     render() {
+        // console.log("this props data", this.props.data)
         return (
-            <View>
-           <Text>knlknkn</Text>
-            </View>
+                <FlatList
+                    data={this.props.data}
+                    renderItem={({item}) =>
+                        <View>
+                            <Text style={{color:'black'}}>{item.Name}</Text>
+                        </View>
+                    }
+
+                />
         )
     }
 }
 
 function mapStateToProps(state) {
+    console.log("state crypto", state.crypto )
     return {
-        crypto: state.crypto
+        data: state.crypto.data && state.crypto.data.result.map(el =>( {...el, key: el.CurrencyID}))
     }
 }
 

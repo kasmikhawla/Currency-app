@@ -13,12 +13,13 @@
   },
   "remotedev": {
     "hostname": "localhost",
-    "port": 5678
+    "port": 19000
   },
   "jest": {
     "preset": "jest-expo"
   },
   "devDependencies": {
+    "redux-devtools-extension": "^2.13.7",
     "remotedev-rn-debugger": "^0.8.3"
   },
   "dependencies": {

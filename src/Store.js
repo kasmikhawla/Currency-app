@@ -8,10 +8,11 @@ import devTools from 'remote-redux-devtools';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import RootReducer from './Reducers';
 
-const middleware = applyMiddleware(thunk, promise, logger);
+const middleware = composeWithDevTools(applyMiddleware(thunk, promise, logger));
 
 const Store = createStore(
     RootReducer,

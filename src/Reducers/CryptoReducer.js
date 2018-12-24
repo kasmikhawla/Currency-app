@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
     switch(action.type) {
 
         case FETCHING_COIN_DATA:
-            return Object.assign(state, {
+            return Object.assign({}, state, {
                 isFetching: true,
                 data: null,
                 hasError: false,
@@ -24,7 +24,8 @@ export default function(state = initialState, action) {
             });
 
         case FETCHING_COIN_DATA_SUCCESS:
-            return Object.assign(state, {
+            console.log("action payload", action.payload.result)
+            return Object.assign({}, state, {
                 isFetching: false,
                 data: action.payload,
                 hasError: false,
